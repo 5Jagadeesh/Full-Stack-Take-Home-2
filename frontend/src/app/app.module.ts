@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HttpClientModule }    from '@angular/common/http';
+import { EmployeesService } from './services/employees.service'
 
 @NgModule({
   declarations: [
@@ -12,9 +14,12 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   ],
   imports: [
     BrowserModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EmployeesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

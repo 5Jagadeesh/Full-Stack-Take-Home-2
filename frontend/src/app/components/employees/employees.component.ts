@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeesService } from "../../services/employees.service";
 
 @Component({
   selector: 'app-employees',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
-  rows = [
+  rows: any[] = [
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
+    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"abc","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
     {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
@@ -34,9 +35,14 @@ export class EmployeesComponent implements OnInit {
     { name: 'Favorite Quote' }
   ];
 
-  constructor() { }
+  constructor(private employeesService: EmployeesService) { }
 
   ngOnInit() {
+    this.employeesService.getAllEmployees().subscribe(employees =>{
+      if(employees.Employees.length >0) {
+        this.rows = employees.Employees;
+      }
+    })
   }
 
 }

@@ -1,4 +1,58 @@
-<div>
-  <ngx-datatable class="table" [columnMode]="'force'" [rowHeight]="'auto'"  [rows]="listData" [columns]="columns" [headerHeight]="100" [footerHeight]="50" rowHeight="auto" [limit]="limit">
+<div class="table" style="margin-top:0; margin-left: 30px; margin-right: 30px">
+  <ngx-datatable class="material" [ngClass]="tablestyle" [columnMode]="'force'" [rowHeight]="'auto'"
+                 [rows]="rows" [columns]="columns" [headerHeight]="50" [footerHeight]="50" [limit]="10" [sortType]="'multi'" [reorderable]="false">
+    <ngx-datatable-column  name="Id" prop="_id" [width]="300" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+          <div class="datatable-header-cell-wrapper">
+          <a class="datatable-header-cell-label draggable">Id</a></div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="First Name" prop="firstName" [width]="200" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper">
+          <a class="datatable-header-cell-label draggable">First Name</a></div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Last Name" prop="lastName" [width]="200" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper ellipsis">
+          <div class="datatable-header-cell-wrapper">
+            <a class="datatable-header-cell-label draggable">Last Name</a></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Role" prop="role" [width]="100" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper ellipsis">
+          <div class="datatable-header-cell-wrapper">
+            <a class="datatable-header-cell-label draggable">Role</a></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Hire Date" prop="hireDate" [width]="200" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper ellipsis">
+          <div class="datatable-header-cell-wrapper">
+            <a class="datatable-header-cell-label draggable">Hire Date</a></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Favorite Joke" prop="favoriteJoke" [width]="300" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper ellipsis">
+          <div class="datatable-header-cell-wrapper">
+            <a class="datatable-header-cell-label draggable">Favorite Joke</a></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Favorite Quote" prop="favoriteQuote" [width]="300" [sortable]="true">
+      <ng-template ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper ellipsis">
+          <div class="datatable-header-cell-wrapper">
+            <a class="datatable-header-cell-label draggable">Favorite Quote</a></div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <!--<ngx-datatable-footer></ngx-datatable-footer>-->
   </ngx-datatable>
 </div>

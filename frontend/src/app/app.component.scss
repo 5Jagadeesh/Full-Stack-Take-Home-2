@@ -1,9 +1,62 @@
+.container{
+  background: #ff8f1d;
+  color: white;
+  height: 45px;
+  padding: 22px !important;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 10px;
+  width: 90%
+}
 .header{
   font-family: "Times New Roman";
   text-align: center;
   color: #ff8f1d;
 }
-.footer{
-  margin-top: 700px;
-  text-align: center;
+.table-header{
+  background: #ff8f1d;
+  margin-bottom: 0;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 10px 10px 0 0;
+  height: 35px;
 }
+.table-header a{
+  margin-left: 80%;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+.app-footer{
+  /*position: fixed;*/
+  background: rgba(0,0,0,0.75);
+  opacity: 0.8;
+  bottom: 0;
+  height: 100px;
+  z-index: 5000;
+  left: 0;
+  /* color: #f96302;
+   font-size: 14px;*/
+  color: #232323;
+  font-size: 16px;
+  right: 0;
+  //border-top:2px solid #eeeeee;
+  line-height: 24px;
+  box-shadow: 0 0 2px 0px #eee, 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.Add h1{
+ width : 50%;
+}
+.Add button{
+  float: right;
+}
+
+/*.container{
+  //background-color: #cbf7ff;
+  padding: 10px;
+  margin: 30px;
+  height: auto;
+  border: black 2px dotted;
+  border-radius: 25px;
+}*/
