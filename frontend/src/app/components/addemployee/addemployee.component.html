@@ -1,37 +1,71 @@
-<!--
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
--->
+<div fxLayout="column" fxLayoutAlign="center stretch" class="addemployee">
 
-<div class="addemployee">
-  <h1>Add Employee</h1>
-  <mat-form-field>
-    <input matInput placeholder="First Name" style="display: inline">
-  </mat-form-field>
+  <div class="header">
+    <div class="text">Add Employee</div>
+    <mat-icon fxFlex="3%" fxLayoutAlign="end start" style="float:right;" (click)="onNoClick()" class="closeIcon">close</mat-icon>
+  </div>
 
-  <mat-form-field>
-    <input matInput placeholder="Last Name" style="display: block">
-  </mat-form-field>
+  <div fxFlex="97%">
+    <div fxLayoutAlign="center center" *ngIf="ServiceErr" class="errMsg">{{ServiceErrMsg}}</div>
+    <br>
+    <form (ngSubmit)="onFormSubmit(Employee)" style="display:block !important;" #Employee="ngForm" fxLayout="column"
+          fxLayoutAlign="center center">
 
-  <mat-form-field>
-    <input matInput placeholder="Hire Date" style="display: block">
-  </mat-form-field>
+      <div id="container" style="margin-top:1px;" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="95px">
+        <div class="left" fxLayout="column" fxFlex="45%">
 
-  <mat-form-field>
-    <input matInput placeholder="Role" style="display: block">
-  </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 250px;">
+            <input matInput placeholder="First Name" name="firstName" required
+                   [(ngModel)]="data.firstName" #firstName="ngModel" pattern="[a-zA-Z ]*">
+            <mat-error *ngIf="Employee.form.invalid">
+              First Name is
+              <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Role">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 250px;">
+            <input matInput placeholder="Last Name" name="lastName" required
+                   [(ngModel)]="data.lastName" #lastName="ngModel">
+            <mat-error *ngIf="Employee.form.invalid">
+              Last Name is
+              <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" style="width: 250px;">
+            <mat-label>Role</mat-label>
+            <mat-select required>
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{role}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="Employee.form.invalid">
+              Role is
+              <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width: 250px;">
+            <input matInput [matDatepicker]="hireDate" placeholder="Hire Date" required name="hireDate"
+                   [(ngModel)]="data.hireDate" #hireDate="ngModel" [max]="date">
+            <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
+            <mat-datepicker #hireDate></mat-datepicker>
+            <mat-error *ngIf="Employee.form.invalid">
+              Hire Date is
+              <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div fxLayoutAlign="center">
+        <button  [ngStyle]="{'background': (Employee.form.valid) ? '#242829': 'lightgray' }" [disabled]="!Employee.form.valid"
+                 class="submit-btn" mat-button>
+          <b>Submit</b>
+        </button>
+      </div>
+
+    </form>
+  </div>
 </div>

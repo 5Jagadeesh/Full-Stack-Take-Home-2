@@ -15,8 +15,8 @@ export class AppComponent {
   addEmployee(){
     this.dialog.open(AddemployeeComponent,  {
       panelClass: 'custom-dialog-container',
-      width: '60%',
-      height: '60%',
+      width: '40%',
+      height: '50%',
       data: {name: 'Jagan', animal: 'tiger'}
 
     });
