@@ -7,24 +7,7 @@ import { EmployeesService } from "../../services/employees.service";
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
-  rows: any[] = [
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"abc","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-    {"_id":"03ed4a97-7dbd-4078-9dc7-3f5de49b5837","firstName":"Jagadeesh","lastName":"T E","hireDate":"2019-01-01","role":"VP","favoriteJoke":"","favoriteQuote":"You had me at meat tornado."},
-  ];
+  rows: any[] = [];
   columns = [
     { prop: 'Id' },
     { name: 'First Name' },
@@ -52,6 +35,8 @@ export class EmployeesComponent implements OnInit {
       }else{
         this.rows =[];
       }
+    },error=>{
+      alert('Failed to list the employees')
     })
   }
 }

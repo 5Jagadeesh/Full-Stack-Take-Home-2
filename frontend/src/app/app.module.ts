@@ -9,7 +9,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { EmployeesService } from './services/employees.service';
 import { MatDialogModule, MatFormFieldModule, MatIconModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -31,7 +31,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   exports:[
     MatFormFieldModule,
