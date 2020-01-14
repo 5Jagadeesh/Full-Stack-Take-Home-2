@@ -1,0 +1,37 @@
+<!--
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+-->
+
+<div class="addemployee">
+  <h1>Add Employee</h1>
+  <mat-form-field>
+    <input matInput placeholder="First Name" style="display: inline">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Last Name" style="display: block">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Hire Date" style="display: block">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Role" style="display: block">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Role">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

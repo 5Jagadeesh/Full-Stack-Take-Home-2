@@ -40,7 +40,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit() {
     this.employeesService.getAllEmployees().subscribe(employees =>{
       if(employees.Employees.length >0) {
-        this.rows = employees.Employees;
+        //this.rows = employees.Employees;
       }
     })
   }
