@@ -60,7 +60,7 @@ GET http://localhost:3000/api/employees
 DELETE http://localhost:3000/api/employees/:id
 
 - delete the record corresponding to the id parameter
-
+-------------------------------------------------------------
 ***Backend***
 
 **How to run**
@@ -97,5 +97,8 @@ DELETE http://localhost:3000/api/employees/:id
                          }`
 5. Delete the employee
     method: Delete
-    url: `http://localhost:3000/api/employees/_id`                         
+    url: `http://localhost:3000/api/employees/_id`
+    -------------------------------------------------
+    
+***Front End***    
 
