@@ -61,15 +61,15 @@ DELETE http://localhost:3000/api/employees/:id
 
 - delete the record corresponding to the id parameter
 
-***Backend
+***Backend***
 
-#How to run
+**How to run**
 1. cd boilerplate
 2. Run `npm install`
 3. Run  `npm start`
 4. The server will run on `https://localhost:3000`
 
-#List of Endpoints
+*List of Endpoints*
 1. Get the list of all employees
     `http://localhost:3000/api/employees`
 2. Get the employee details based on _id  
