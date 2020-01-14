@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
-#Steps to start
+#How to run
 1. cd frontend (if you are not already in)
 2. Install dependencies `npm install`
 3. Run the backend first to use the services.

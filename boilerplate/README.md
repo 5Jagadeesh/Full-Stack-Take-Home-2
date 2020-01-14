@@ -1,5 +1,5 @@
 #Backend
-#Steps
+#How to run
 1. cd boilerplate
 2. Run `npm install`
 3. Run  `npm start`
