@@ -98,7 +98,7 @@ DELETE http://localhost:3000/api/employees/:id
 5. Delete the employee
     method: Delete
     url: `http://localhost:3000/api/employees/_id`
-    -------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
     
 ***Front End***    
 
