@@ -35,14 +35,23 @@ export class EmployeesComponent implements OnInit {
     { name: 'Favorite Quote' }
   ];
 
-  constructor(private employeesService: EmployeesService) { }
-
-  ngOnInit() {
-    this.employeesService.getAllEmployees().subscribe(employees =>{
-      if(employees.Employees.length >0) {
-        //this.rows = employees.Employees;
-      }
+  constructor(private employeesService: EmployeesService) {
+    this.employeesService.listen().subscribe((m:any)=>{
+      this.ngOnInit();
     })
   }
 
+  ngOnInit() {
+    this.refreshTable();
+  }
+  refreshTable(){
+    console.log("Refresh");
+    this.employeesService.getAllEmployees().subscribe(employees =>{
+      if(employees.Employees.length >0) {
+        this.rows = employees.Employees;
+      }else{
+        this.rows =[];
+      }
+    })
+  }
 }

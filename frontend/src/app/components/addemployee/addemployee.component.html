@@ -1,5 +1,4 @@
 <div fxLayout="column" fxLayoutAlign="center stretch" class="addemployee">
-
   <div class="header">
     <div class="text">Add Employee</div>
     <mat-icon fxFlex="3%" fxLayoutAlign="end start" style="float:right;" (click)="onNoClick()" class="closeIcon">close</mat-icon>
@@ -16,7 +15,7 @@
 
           <mat-form-field class="example-full-width" style="width: 250px;">
             <input matInput placeholder="First Name" name="firstName" required
-                   [(ngModel)]="data.firstName" #firstName="ngModel" pattern="[a-zA-Z ]*">
+                   [(ngModel)]="data.firstName" pattern="[a-zA-Z ]*">
             <mat-error *ngIf="Employee.form.invalid">
               First Name is
               <strong>required</strong>
@@ -25,7 +24,7 @@
 
           <mat-form-field class="example-full-width" style="width: 250px;">
             <input matInput placeholder="Last Name" name="lastName" required
-                   [(ngModel)]="data.lastName" #lastName="ngModel">
+                   [(ngModel)]="data.lastName">
             <mat-error *ngIf="Employee.form.invalid">
               Last Name is
               <strong>required</strong>
@@ -34,7 +33,7 @@
 
           <mat-form-field class="example-full-width" style="width: 250px;">
             <mat-label>Role</mat-label>
-            <mat-select required>
+            <mat-select required [(value)]="role">
               <mat-option *ngFor="let role of roles" [value]="role">
                 {{role}}
               </mat-option>
@@ -47,7 +46,7 @@
 
           <mat-form-field style="width: 250px;">
             <input matInput [matDatepicker]="hireDate" placeholder="Hire Date" required name="hireDate"
-                   [(ngModel)]="data.hireDate" #hireDate="ngModel" [max]="date">
+                   [(ngModel)]="data.hireDate" [max]="date">
             <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
             <mat-datepicker #hireDate></mat-datepicker>
             <mat-error *ngIf="Employee.form.invalid">
