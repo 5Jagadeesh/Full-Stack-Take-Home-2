@@ -49,27 +49,37 @@ const postEmployee = (req)=> {
         const joke = await  fav_joke().catch(err=>{
             reject (`Fav_Joke_Error, ${err}`);
         });
-        //Update json with new employee
-        const id = uuid();
-        await employees.Employees.push({
-            _id: id,
-            "firstName": req.firstName,
-            "lastName": req.lastName,
-            "hireDate": req.hireDate,
-            "role": req.role,
-            "favoriteJoke": joke ? joke :"",
-            "favoriteQuote": quote ? quote.toString() :""
-        });
-        fs.writeFile('./data/employees.json', JSON.stringify(employees),(err)=>{
-            if(err){
-                reject(`Failed to write to database ${err}`);
-            }else{
-                resolve({
-                    Message : "New employee added successfully",
-                    EmployeeId: id
-                });
-            }
-        });
+        let ceoexist = [];
+        if(req.role === 'CEO'){
+            ceoexist = await employees.Employees.filter((employee)=>{
+                return employee.role === 'CEO'
+            })
+        }
+        if(ceoexist.length > 0){
+            reject(`There can be only one CEO`);
+        } else {
+            //Update json with new employee
+            const id = uuid();
+            await employees.Employees.push({
+                _id: id,
+                "firstName": req.firstName,
+                "lastName": req.lastName,
+                "hireDate": req.hireDate,
+                "role": req.role,
+                "favoriteJoke": joke ? joke : "",
+                "favoriteQuote": quote ? quote.toString() : ""
+            });
+            fs.writeFile('./data/employees.json', JSON.stringify(employees), (err) => {
+                if (err) {
+                    reject(`Failed to write to database ${err}`);
+                } else {
+                    resolve({
+                        Message: "New employee added successfully",
+                        EmployeeId: id
+                    });
+                }
+            });
+        }
     });
 };
 
@@ -78,9 +88,22 @@ const updateEmployee = async (id,info)=> {
     return new Promise(async (resolve, reject) => {
 
         const employees = JSON.parse(data);
-        let exist = false;
-        await employees.Employees.filter((employee, index) => {
+        let exist = false, ceoroleexist = [], ceo_id=[];
 
+        if(info.role === 'CEO'){
+            ceoroleexist = await employees.Employees.filter((employee)=>{
+                return employee.role === 'CEO'
+            });
+           ceo_id = ceoroleexist.filter(ceo=>{
+               return ceo._id === id;
+           })
+        }
+
+        if(ceoroleexist.length > 0 && ceo_id.length === 0){
+            reject(`You can't have more than one CEO`);
+        }
+
+        await employees.Employees.filter((employee, index) => {
             if (employee._id === id) {
                 exist = true;
                /* employees.Employees[index].firstName = info.firstName ? info.firstName : employees.Employees[index].firstName;
