@@ -60,5 +60,66 @@ GET http://localhost:3000/api/employees
 DELETE http://localhost:3000/api/employees/:id
 
 - delete the record corresponding to the id parameter
+-------------------------------------------------------------
+***Backend***
 
+**How to run**
+1. cd boilerplate
+2. Run `npm install`
+3. Run  `npm start`
+4. The server will run on `https://localhost:3000`
 
+*List of Endpoints*
+1. Get the list of all employees
+
+    `http://localhost:3000/api/employees`
+    
+2. Get the employee details based on _id 
+
+      `http://localhost:3000/api/employees/_id`
+      
+      ex: `http://localhost:3000/api/employees/03ed4a97-7dbd-4078-9dc7-3f5de49b5837`
+      
+3. Create an employee: 
+
+    method: POST
+    
+    url: `http://localhost:3000/api/employees`
+    
+    sample request: `{
+                    	"firstName" : "Jagadeesh",
+                        "lastName" : "T E",
+                        "hireDate" : "2019-01-01",
+                        "role" : "VP"
+                    }`
+4. Update the employee information
+
+     method: PUT
+     
+     url: `http://localhost:3000/api/employees/_id`
+     
+     sample request: `{
+                         	"firstName" : "Jagz",
+                             "lastName" : "T",
+                             "hireDate" : "2020-01-01",
+                             "role" : "VP",
+                             "favoriteJoke":"joke test",
+                             "favoriteQuote":"quote test"
+                        }`
+5. Delete the employee
+
+    method: Delete
+    
+    url: `http://localhost:3000/api/employees/_id`
+------------------------------------------------------------------------------------------------------------------------------
+    
+***Front End***    
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+
+**How to run**
+1. cd frontend (if you are not already in)
+2. Install dependencies `npm install`
+3. Run the backend first to use the services.
+4. Run `ng serve`
+5. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
