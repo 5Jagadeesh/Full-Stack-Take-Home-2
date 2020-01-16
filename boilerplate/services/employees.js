@@ -88,38 +88,46 @@ const updateEmployee = async (id,info)=> {
     return new Promise(async (resolve, reject) => {
 
         const employees = JSON.parse(data);
-        let exist = false, ceoroleexist = [], ceo_id=[];
+        let exist = false, update=true;
 
         if(info.role === 'CEO'){
-            ceoroleexist = await employees.Employees.filter((employee)=>{
-                return employee.role === 'CEO'
+            let ceoroleexist = await employees.Employees.filter((employee)=>{
+                return employee.role === 'CEO';
+            }).map(emp=>{
+                console.log("emp"+JSON.stringify(emp));
+                if(emp._id === id){
+                    update = true;
+                    return [];
+                }else {
+                    update =  false;
+                    return emp;
+                }
             });
-           ceo_id = ceoroleexist.filter(ceo=>{
-               return ceo._id === id;
-           })
         }
-
-        if(ceoroleexist.length > 0 && ceo_id.length === 0){
+        if(!update){
             reject(`You can't have more than one CEO`);
+            return;
         }
+            await employees.Employees.filter((employee, index) => {
 
-        await employees.Employees.filter((employee, index) => {
-            if (employee._id === id) {
-                exist = true;
-               /* employees.Employees[index].firstName = info.firstName ? info.firstName : employees.Employees[index].firstName;
-                employees.Employees[index].lastName = info.lastName ? info.lastName : employees.Employees[index].lastName;
-                employees.Employees[index].role = info.role ? info.role : employees.Employees[index].role;
-                employees.Employees[index].hireDate = info.hireDate ? info.hireDate : employees.Employees[index].hireDate;
-                employees.Employees[index].favoriteQuote = info.favoriteQuote ? info.favoriteQuote : employees.Employees[index].favoriteQuote;
-                employees.Employees[index].firstFavoriteJoke = info.firstFavoriteJoke ? info.firstFavoriteJoke : employees.Employees[index].firstFavoriteJoke;
-                employees.Employees[index].secondFavoriteJoke = info.secondFavoriteJoke ? info.secondFavoriteJoke : employees.Employees[index].secondFavoriteJoke;*/
-               info._id = id;
-               employees.Employees[index] = info;
-            }
+                if (employee._id === id) {
+                    exist = true;
+                    /* employees.Employees[index].firstName = info.firstName ? info.firstName : employees.Employees[index].firstName;
+                     employees.Employees[index].lastName = info.lastName ? info.lastName : employees.Employees[index].lastName;
+                     employees.Employees[index].role = info.role ? info.role : employees.Employees[index].role;
+                     employees.Employees[index].hireDate = info.hireDate ? info.hireDate : employees.Employees[index].hireDate;
+                     employees.Employees[index].favoriteQuote = info.favoriteQuote ? info.favoriteQuote : employees.Employees[index].favoriteQuote;
+                     employees.Employees[index].firstFavoriteJoke = info.firstFavoriteJoke ? info.firstFavoriteJoke : employees.Employees[index].firstFavoriteJoke;
+                     employees.Employees[index].secondFavoriteJoke = info.secondFavoriteJoke ? info.secondFavoriteJoke : employees.Employees[index].secondFavoriteJoke;*/
+                    info._id = id;
+                    employees.Employees[index] = info;
+                }
 
-        });
+            });
+
         if(!exist){
             reject (`Employee Id ${id} does not exist`);
+            return;
         }
         fs.writeFile('./data/employees.json', JSON.stringify(employees), (err) => {
             if (err) {
